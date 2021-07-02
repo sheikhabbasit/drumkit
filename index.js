@@ -10,21 +10,25 @@ for (x=0; x<y; x++) {
 document.querySelectorAll("div button")[x].addEventListener("click", function(){
   var buttonInnerHTML = this.innerHTML;
   makeSound(buttonInnerHTML);
-  console.log(buttonInnerHTML);
+  animateEffect(buttonInnerHTML);
+  // console.log(buttonInnerHTML);
 });
 
 
 }
 
+// Detects Key Press
+
 
 document.addEventListener("keydown", function(a){
   makeSound(a.key);
-  console.log(a);
+  animateEffect(a.key);
+  // console.log(a);
 } )
 
 
 
-
+// Function to make appropriate sound
 
 function makeSound(key){
   switch (key) {
@@ -68,3 +72,15 @@ function makeSound(key){
 
   }
 }
+
+// Animation function 
+
+
+function animateEffect (currentKey){
+  var activeButton = document.querySelector("."+ currentKey)
+  activeButton.classList.add("pressed");
+  setTimeout(function(){
+    activeButton.classList.remove("pressed");
+  }, 100);
+}
+
